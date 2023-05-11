@@ -20,6 +20,8 @@ data = data.reset_index(drop=True)
 
 #b)
 print(data.sort_values(by=['Fuel Consumption City (L/100km)']).head(3)[['Make','Model','Fuel Consumption City (L/100km)']])
+print(data[['Make', 'Model', 'Fuel Consumption City (L/100km)']
+           ].iloc[data['Fuel Consumption City (L/100km)'].argsort().tail(3)])
 
 
 
