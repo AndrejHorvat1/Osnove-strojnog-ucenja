@@ -147,3 +147,23 @@ svm_gscv.fit( X_train_n , y_train )
 # sa K=100  granica jedne klase je jako povucena u drugu klasu, vidi se iz samog grafa (tocnost je 0.787-dogada se underfitting)
 print (svm_gscv.best_params_)
 print (svm_gscv.best_score_)
+
+
+
+# zadatak 3
+# Kako promjena ovih hiperparametara utjece na granicu odluke te pogrešku na skupu podataka za testiranje? ˇ
+# Mijenjajte tip kernela koji se koristi. Što primjecujete?
+
+# za gama=0.1, C se mijenja
+# smanjivanjem parametra C, crvena klasa se povecava, u ekstremnom slucaju za C=0.01 svi podaci pripadaju samo jednoj klasi
+# povecanajem parametra C, na C=1000, vrlo je dobro definirana granica izmedu dvije klase, ali postoji i  prostor duge klase u kojem zapravo nema podataka
+# ako koristimo C=100,00 granica je vrlo blizu savrsenosti
+
+# za C=10, a gama se mijenja
+# za gamma=0.001 granica je izgledom blizu pravca, dok za gamma=10: zaokruzuje se prostor oko podataka i nastaju otoci
+# za gamma=1000, svaki podatak je otok za sebe i to u vrlo suzenom prostoru, najblizi podaci se spajaju u  zajednicki otok kad je gamma=100
+
+
+# sto vise overfittamo podatke, kao npr za gamma=1000, tocnost na skupu za treniranje je oko 0.994,
+# dok je za testni skup ona samo 0.650
+# ako uzmemo gamma=1 i C=10, sto bi bio najbolji izbor za ovaj slucaj- tocnost skupa za treniranje je 0.922, a za test je 0.925, sto znaci da je granica odlicno postavljena
