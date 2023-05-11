@@ -54,6 +54,28 @@ plt.title('Podaci za treniranje i granica odluke')
 cbar = plt.colorbar(ticks=[0, 1])
 plt.show()
 
+#c2
+# c)
+# Retrieve the coefficients and intercept from the trained model
+coef = lr_model.coef_[0]
+intercept = lr_model.intercept_
+
+# Define the decision boundary as a function of x1
+
+
+def decision_boundary(x1):
+
+    return (-coef[0]*x1 - intercept) / coef[1]
+
+
+# Plot the decision boundary along with the training data
+plt.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cmap='Spectral')
+plt.plot(X_train[:, 0], decision_boundary(X_train[:, 0]))
+plt.xlabel('x1')
+plt.ylabel('x2')
+plt.title('Logistic Regression Decision Boundary')
+plt.show()
+
 
 # d
 y_test_p = LogRegression_model.predict(X_test)
