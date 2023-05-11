@@ -52,3 +52,18 @@ plt.xlabel('$x_1$')
 plt.ylabel('$x_2$')
 plt.title('podatkovni primjeri')
 plt.show()
+
+# Lakat metoda za odredivanje najboljeg K
+distortions = []
+K = range(1, 15)
+for k in K:
+    kmm = KMeans(n_clusters=k, init='random', n_init=5, random_state=0)
+    kmm.fit(X)
+    distortions.append(kmm.inertia_)
+
+plt.figure()
+plt.plot(K, distortions)
+plt.show()
+
+# 1.1 postoji 3 grupe
+# 1.2  promjenom broja K stvara se onoliko grupa koliki je K
