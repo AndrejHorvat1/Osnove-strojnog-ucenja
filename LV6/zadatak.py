@@ -129,10 +129,21 @@ knn_gs = GridSearchCV(KNN_model2, param_grid, cv = 5 )
 knn_gs.fit(X_train_n, y_train )
 print (knn_gs.best_params_)
 
+# unakrsna validacija
+scores = cross_val_score(KNN2, X_train_n, y_train, cv=5)
+print('cv_scores mean:{}'.format(np.mean(scores)))
+
 #4
 SVM_model2 = svm.SVC(kernel ="rbf", gamma = 1, C=0.1 )
 param_grid = {"C": [10 , 100 , 100 ], "gamma": [10 , 1 , 0.1 , 0.01 ]}
 svm_gscv = GridSearchCV( SVM_model2 , param_grid , cv =5 , scoring ="accuracy", n_jobs = -1 )
 svm_gscv.fit( X_train_n , y_train )
+
+# 1.1.
+# za razliku od logisticke regresije, knn ima bolju tocnost(i sa skupom testiranja i treniranja), granica vise nije ravna linija vec zakrivljena i bolje odvaja podatke
+
+# 1.2
+# razlika kada upotrijebimo K=1 i K=100: granica s 1 izgelda ne definirano i raspisano, postoji puno "otoka"(tocnost je 0.994-dogada se overfitting)
+# sa K=100  granica jedne klase je jako povucena u drugu klasu, vidi se iz samog grafa (tocnost je 0.787-dogada se underfitting)
 print (svm_gscv.best_params_)
 print (svm_gscv.best_score_)
