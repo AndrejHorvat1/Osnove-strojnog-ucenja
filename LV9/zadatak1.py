@@ -27,6 +27,13 @@ X_test_n = X_test.astype('float32')/ 255.0
 y_train = to_categorical(y_train, dtype ="uint8")
 y_test = to_categorical(y_test, dtype ="uint8")
 
+#ako koristimo bas bazu onda dijelimo na x i y i ako bude error da mismatcha (1,) i (3,) ide ovaj kod: za kategoricki klase
+#X = data[["length (cm)","width (cm)","length (m)","width (m)"]].to_numpy()
+#y = data["izlazni"].to_numpy().reshape(-1, 1)
+#encoder = OneHotEncoder()
+#y = encoder.fit_transform(y).toarray()
+
+
 # CNN mreza
 model = keras.Sequential()
 model.add(layers.Input(shape=(32,32,3)))
