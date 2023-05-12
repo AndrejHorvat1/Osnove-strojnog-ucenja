@@ -87,3 +87,17 @@ model . save (" FCN / ")
 del model
 model = load_model ("FCN /")
 model . summary ()
+
+
+
+#za ucitavanje modela moze se koristiti i:
+#model = load_model('model.keras')
+#score = model.evaluate(X_test_n, y_test, verbose=0)
+#print('Tocnost na testnom skupu podataka: ',score[1])
+
+#predictions = model.predict (X_test_n )
+#predictions=np.around(predictions).astype(np.int32)
+#cm=confusion_matrix(y_test,predictions)
+#cm_disp=ConfusionMatrixDisplay(cm)
+#cm_disp.plot()
+#plt.show()
