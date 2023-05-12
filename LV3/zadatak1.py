@@ -17,6 +17,8 @@ print(data.describe())
 data.dropna(axis=0)
 data.drop_duplicates()
 data = data.reset_index(drop=True)
+data[data.select_dtypes(include=['object']).columns] = data.select_dtypes(include=['object']).astype('category')
+
 
 #b)
 print(data.sort_values(by=['Fuel Consumption City (L/100km)']).head(3)[['Make','Model','Fuel Consumption City (L/100km)']])
