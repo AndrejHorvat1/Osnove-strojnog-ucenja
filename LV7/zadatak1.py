@@ -53,6 +53,12 @@ plt.ylabel('$x_2$')
 plt.title('podatkovni primjeri')
 plt.show()
 
+# za vise grupa, mogao bi se koristit i kod:
+# plt.scatter(X[labels == 0, 0], X[labels == 0, 1], s=50, c='lightgreen',  label='Grupa 1')
+# plt.scatter(X[labels == 1, 0], X[labels == 1, 1], s=50, c='orange',  label='Grupa 2')
+# plt.scatter(X[labels == 2, 0], X[labels == 2, 1], s=50, c='lightblue', label='Grupa 3')
+
+
 # Lakat metoda za odredivanje najboljeg K
 distortions = []
 K = range(1, 15)
@@ -64,6 +70,11 @@ for k in K:
 plt.figure()
 plt.plot(K, distortions)
 plt.show()
+
+# tocnost KMeans mozemo izracunati prema:
+# y_true = data.iloc[:, -1].values
+# accuracy = np.mean(y_true == labels)
+# print("tocnost je:" ,accuracy)
 
 # 1.1 postoji 3 grupe
 # 1.2  promjenom broja K stvara se onoliko grupa koliki je K
